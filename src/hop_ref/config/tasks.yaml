@@ -1,0 +1,116 @@
+make_hook:
+  description: >
+    Based on the user input "{topic}" and "{audience}", write 3 alternative hooks.
+
+    Use the LinkedIn Research Tool to understand what hooks work for similar topics.
+
+    Constraints:
+    - Maximum 2 short lines per hook
+    - Avoid buzzwords and jargon
+    - Be specific and create tension or promise immediate value
+    - Front-load the value proposition
+    - Consider what {audience} cares about most
+
+    Remember: The hook is what users see before "see more" - it must stop the scroll.
+  expected_output: >
+    A "Hooks" section with exactly 3 alternative hooks. Each hook should be 1–2 short
+    lines maximum. Format as:
+
+    ## Hook Options
+
+    **Option 1:**
+    [Hook text - max 2 lines]
+
+    **Option 2:**
+    [Hook text - max 2 lines]
+
+    **Option 3:**
+    [Hook text - max 2 lines]
+  agent: hook_crafter
+
+build_value:
+  description: >
+    Choose the strongest hook from the options provided and develop the body content.
+
+    Create 3–5 bullets or steps that deliver on the hook's promise. Include:
+    - 3-5 crisp, actionable points (can be steps, principles, or insights)
+    - 1 tangible, concrete example that {audience} can relate to
+    - A brief "why it works" or "key insight" note
+
+    Keep language simple and practical. Structure for skimmability.
+    Each point should provide immediate value.
+  expected_output: >
+    A complete post body with:
+
+    ## Selected Hook
+    [The chosen hook]
+
+    ## Body
+    [3-5 bullet points or numbered steps]
+
+    ## Example
+    [1 concrete, relatable scenario]
+
+    ## Why It Works
+    [Brief explanation of the key insight]
+  agent: value_builder
+
+add_engagement:
+  description: >
+    Add a closing CTA and one question that invites comments from {audience}.
+
+    Use the Hashtag Generator Tool to get strategic hashtag recommendations
+    for the topic and audience.
+
+    Requirements:
+    - CTA should feel natural and valuable, not pushy
+    - Comment prompt must be specific to the topic and easy to answer
+    - Include 5-7 strategic hashtags (mix of broad, topic-specific, and niche)
+    - Keep it authentic - optimize for real conversation, not vanity metrics
+  expected_output: >
+    ## Call to Action
+    [A natural, valuable CTA - 1-2 sentences]
+
+    ## Comment Prompt
+    [One specific question that invites genuine discussion]
+
+    ## Hashtags
+    [5-7 strategic hashtags based on tool recommendations]
+  agent: engagement_architect
+
+compose_carousel:
+  description: >
+    Turn the hook+body into a 6–8 slide document-carousel outline.
+
+    Structure:
+    - Slide 1: Title/Promise (the hook transformed into a slide title)
+    - Slides 2-6 (or 2-7): Core beats - one idea per slide from the body content
+    - Final slide: Strong CTA
+
+    Constraints:
+    - Each slide: maximum ~25 words
+    - One clear idea per slide
+    - Use simple, direct language
+    - Format as numbered Markdown list with "Slide X:" headings
+
+    This outline should be ready to paste into a design tool and export as PDF.
+  expected_output: >
+    A "Carousel Outline" section formatted as:
+
+    # LinkedIn Carousel: [Topic]
+
+    ## Slide 1: [Title/Promise]
+    [Hook/promise - max 25 words]
+
+    ## Slide 2: [First Key Point]
+    [Content - max 25 words]
+
+    ## Slide 3: [Second Key Point]
+    [Content - max 25 words]
+
+    [Continue for 6-8 slides total]
+
+    ## Slide [N]: Take Action
+    [CTA - max 25 words]
+  agent: format_alchemist
+  output_file: output/carousel_outline.md
